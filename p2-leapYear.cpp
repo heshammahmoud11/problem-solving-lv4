@@ -14,6 +14,7 @@ string checkLeapYear(int num)
     if(num % 400 == 0)
       return "Leap Year";
     else if((num % 4 == 0) && (num % 100 != 0))
+    
        return "Leap Year";
     else
         return "NOt Leap Year";
