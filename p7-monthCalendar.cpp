@@ -23,13 +23,15 @@ bool isLeapYear(short year)
     return (year % 400 == 0) || (year % 4 == 0 && year % 100 != 0);
 }
 
-short getMonthDays(short month, short year)
+short getMonthDays  (short month, short year)
 {
     if (month < 1 || month > 12) return 0;
     int days[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     return (month == 2)? (isLeapYear(year) ? 29 : 28) : days[month]; 
 }
+
+// this function give me the first day in the month
 
 short getDayOrder(short day, short month, short year)
 {
@@ -53,7 +55,7 @@ string monthName(short month)
 {
     string monthArr[13] {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Augs", "Sept", "Oct","Nov", "Dec"};
     return monthArr[month];
-
+  
 }
 void printMonthCalendar(short month, short year)
 {
