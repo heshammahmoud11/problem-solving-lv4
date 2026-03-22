@@ -46,6 +46,20 @@ short beginingDays(short day, short month, short year)
     return sumDays + day;
 }
 
+void getDateFromDays(short day, short year, short & outDay, short & outMonth)
+{ 
+    int i = 1;
+    while (day > getMonthDays(i, year)) 
+    {
+         day -= getMonthDays(i, year);
+         i++; 
+
+    }
+    outDay = day; 
+    outMonth = i;
+    
+}
+
 int main()
 {
     short d = getDay();
@@ -53,5 +67,12 @@ int main()
     short y = getYear(); 
 
     cout << "The Begining Days from Year: " <<  beginingDays(d, m, y) << endl;
+    short n = beginingDays(d, m, y);
+
+    short outDay, outMonth; 
+
+    getDateFromDays(n, y, outDay, outMonth);
+    cout << "Date For Days [ " << n << " ] is: " << outDay << " / " << outMonth << " / " << y << endl; 
+    
     return 0;
 }
