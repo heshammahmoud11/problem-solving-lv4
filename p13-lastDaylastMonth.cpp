@@ -81,6 +81,7 @@ int main()
     stDate date = readFullData(); 
 
     checkLastDay(date);
+    
     checkLastMonth(date);
 
     return 0;
