@@ -71,22 +71,22 @@ bool lastMonth_N_Year(short month)
     return (month == 12);
 }
 
-stDate increaseDate_BY_1Day(stDate date)
+stDate decreaseDate_By_1Day(stDate date)
 {
-    if(date.day < getMonthDays(date.month, date.year))
+    if(date.day > 1)
     {
-        date.day++;
+        date.day--;
     }
-    else if(date.month < 12)
+    else if(date.month > 1)
     {
-        date.day = 1;
-        date.month++;
+        date.day = getMonthDays(date.month - 1, date.year);
+        date.month--;
     }
     else
     {
-        date.day = 1;
-        date.month = 1;
-        date.year++;
+        date.day = 31;
+        date.month = 12;
+        date.year--;
     }
 
     return date;
@@ -96,13 +96,13 @@ int getDifference_N_Dates(stDate date1, stDate date2, bool includeEndDay = false
 {
     int days = 0;
 
-    while (isDate1_before_Date2(date1, date2))
+    while (!isDate1_before_Date2(date1, date2))
     {
-        days++;
-        date1 = increaseDate_BY_1Day(date1);
+        days--;
+        date1 = decreaseDate_By_1Day(date1);
     }
 
-    return  includeEndDay ? ++days : days;
+    return  includeEndDay ? days : ++days;
 }
 
 stDate getSystemDate()
@@ -122,9 +122,10 @@ int main()
 {
 
     stDate date1 = readFullData();
-    stDate date2 = getSystemDate();
+    stDate date2 = readFullData();
 
-    cout << "Diff Age in Days: " << getDifference_N_Dates(date1, date2, true) << " Day(s)\n";
+    cout << "Diff Age in Days: " << getDifference_N_Dates(date1, date2) << " Day(s)\n";
+    cout << "Diff Age in Days Include The End Day: " << getDifference_N_Dates(date1, date2, true) << " Day(s)\n";
 
     return 0;
 }

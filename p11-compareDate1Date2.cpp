@@ -64,8 +64,10 @@ bool compare2Date(stDate date1, stDate date2)
 }
 
 
+
 stDate readFullData()
 {
+ 
     stDate date;
 
     date.day = readDay();

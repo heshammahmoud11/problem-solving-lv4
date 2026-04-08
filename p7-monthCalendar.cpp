@@ -66,7 +66,7 @@ void printMonthCalendar(short month, short year)
 
     printf ( "\n_______________________%s________________________\n\n", monthName(month).c_str()); 
 
-    printf("   Sun   Mon   Tue   Wed   Thu   Fri   Sat\n");
+    printf("  Sun  Mon  Tue  Wed  Thu  Fri  Sat\n");
 
     // make all days before the first day empty spaces 
     int i = 0;
@@ -77,24 +77,33 @@ void printMonthCalendar(short month, short year)
 
     for(int j = 1; j <= monthDays; j++)
     {
-        printf("%6d", j);
+        printf("%5d", j);
         
         if(++i == 7) 
         {
             i = 0;
             printf("\n");
-        }
+       }
     }
     cout << "\n_______________________________________________\n\n";
+}
+
+void printYearCalendar(short year)
+{
+  for(int i = 1; i <= 12; i++)
+  {
+    printMonthCalendar(i, year);
+  }
 }
 
 int main()
 {
    short y = getYear();
-   short m = getMonth();
+ //  short m = getMonth();
   // cout << getMonthDays(m, y) << endl;
   //printDaysTable( m);
-  printMonthCalendar(m, y);
+ // printMonthCalendar(m, y);
+ printYearCalendar(y); 
 
     return 0;
 }
